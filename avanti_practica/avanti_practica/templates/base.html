@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Avanti{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h2>Proyecto Avanti</h2>
+        <nav>
+            <a href="/">Inicio</a> |
+            <a href="/acerca/">Acerca</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        {% block contenido %}{% endblock %}
+    </main>
+</body>
+</html>
