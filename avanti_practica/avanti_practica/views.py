@@ -5,3 +5,6 @@ def inicio(request):
 
 def acerca(request):
     return render(request, "acerca.html")
+
+def login(request):
+    return render(request, "login.html")
