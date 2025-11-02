@@ -1,6 +1,6 @@
 body {
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,46 +9,55 @@ body {
 
 .login-container {
   background: white;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  width: 300px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  width: 350px;
   text-align: center;
 }
 
 h1 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  color: #2F2E41;
+  margin-bottom: 15px;
 }
 
 label {
+  display: block;
+  margin-top: 15px;
   text-align: left;
-  color: #444;
-  font-size: 14px;
+  font-weight: bold;
+  color: #333;
 }
 
 input {
+  width: 100%;
   padding: 10px;
+  margin-top: 5px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 button {
-  background-color: #007bff;
-  color: white;
+  margin-top: 20px;
+  width: 100%;
   padding: 10px;
+  background-color: #2F2E41;
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #FFD500;
+  color: #2F2E41;
+}
+
+.alert {
+  background: #DFF2BF;
+  color: #4F8A10;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
