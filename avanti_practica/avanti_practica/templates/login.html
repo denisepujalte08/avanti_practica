@@ -1,30 +1,285 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | Avanti</title>
-  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avanti - Página de Inicio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #E8DEF8;
+            min-height: 100vh;
+        }
+
+        .browser-bar {
+            background-color: #fff;
+            padding: 12px 20px;
+            border-bottom: 3px solid #00C8B3;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .browser-controls {
+            display: flex;
+            gap: 10px;
+            padding: 8px;
+            border: 2px dashed #ccc;
+            border-radius: 4px;
+        }
+
+        .control-btn {
+            width: 24px;
+            height: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .url-bar {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px dashed #00C8B3;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lock-icon {
+            color: #666;
+        }
+
+        .user-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #888;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .menu-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            border: 2px dashed #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .menu-dot {
+            width: 5px;
+            height: 5px;
+            background-color: #666;
+            border-radius: 50%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 60px;
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+
+        .shield {
+            width: 100%;
+            height: 100%;
+            border: 4px solid #00C8B3;
+            border-radius: 12px 12px 20px 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .people {
+            display: flex;
+            gap: 4px;
+        }
+
+        .person {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #00C8B3;
+            border-radius: 50%;
+        }
+
+        .person-body {
+            width: 16px;
+            height: 16px;
+            border: 3px solid #00C8B3;
+            border-radius: 4px;
+            margin-top: 2px;
+        }
+
+        .logo-text {
+            font-size: 48px;
+            font-weight: bold;
+            color: #00C8B3;
+        }
+
+        .welcome-title {
+            font-size: 64px;
+            font-weight: bold;
+            color: #00C8B3;
+            margin-bottom: 30px;
+        }
+
+        .welcome-text {
+            font-size: 20px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            max-width: 600px;
+        }
+
+        .btn-primary {
+            background-color: #00C8B3;
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #00b09d;
+        }
+
+        .register-link {
+            color: #333;
+            text-decoration: underline;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .register-link:hover {
+            color: #00C8B3;
+        }
+
+        .alert-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 70px;
+            height: 70px;
+            background-color: #00C8B3;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 200, 179, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .alert-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .alert-icon {
+            width: 0;
+            height: 0;
+            border-left: 18px solid transparent;
+            border-right: 18px solid transparent;
+            border-bottom: 32px solid #333;
+            position: relative;
+        }
+
+        .alert-icon::after {
+            content: '!';
+            position: absolute;
+            color: #00C8B3;
+            font-size: 24px;
+            font-weight: bold;
+            top: 8px;
+            left: -6px;
+        }
+    </style>
 </head>
 <body>
-  <div class="login-container">
-    <h1>Iniciar Sesión</h1>
+    <div class="browser-bar">
+        <div class="browser-controls">
+            <button class="control-btn">←</button>
+            <button class="control-btn">→</button>
+            <button class="control-btn">↻</button>
+        </div>
+        <div class="url-bar">
+            <span class="lock-icon">🔒</span>
+            <span>www.url.com</span>
+        </div>
+        <div class="user-icon">M</div>
+        <div class="menu-icon">
+            <div class="menu-dot"></div>
+            <div class="menu-dot"></div>
+            <div class="menu-dot"></div>
+        </div>
+    </div>
 
-    {% if mensaje %}
-      <div class="alert">{{ mensaje }}</div>
-    {% endif %}
+    <div class="container">
+        <div class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 10 L40 5 L70 10 L70 50 C70 65 40 75 40 75 C40 75 10 65 10 50 Z" stroke="#00C8B3" stroke-width="4" fill="none"/>
+                    <circle cx="28" cy="32" r="6" stroke="#00C8B3" stroke-width="3" fill="none"/>
+                    <circle cx="52" cy="32" r="6" stroke="#00C8B3" stroke-width="3" fill="none"/>
+                    <rect x="22" y="42" width="12" height="16" rx="2" stroke="#00C8B3" stroke-width="3" fill="none"/>
+                    <rect x="46" y="42" width="12" height="16" rx="2" stroke="#00C8B3" stroke-width="3" fill="none"/>
+                </svg>
+            </div>
+            <div class="logo-text">Avanti</div>
+        </div>
 
-    <form method="POST">
-      {% csrf_token %}
-      <label for="email">Correo electrónico</label>
-      <input type="email" id="email" name="email" placeholder="Ej: nombre@correo.com" required>
+        <h1 class="welcome-title">¡Bienvenido a Avanti!</h1>
+        
+        <p class="welcome-text">
+            Somos un lugar seguro para aquellos que no saben dónde encontrarlo. Anímate y te ayudaremos a avanzar.
+        </p>
 
-      <label for="password">Contraseña</label>
-      <input type="password" id="password" name="password" placeholder="********" required>
+        <div>
+            <button class="btn-primary">Iniciar sesión</button>
+        </div>
+        
+        <a href="#" class="register-link">Registrarse</a>
+    </div>
 
-      <button type="submit">Ingresar</button>
-    </form>
-  </div>
+    <button class="alert-btn">
+        <div class="alert-icon"></div>
+    </button>
 </body>
 </html>
